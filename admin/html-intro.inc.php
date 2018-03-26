@@ -20,7 +20,7 @@ $module_version = $view->module->version();
 	<div class="metabox-prefs">
 		<div class="wrap about-wrap" style="position:relative;">
 			<div style="float:right;">
-				<a href="https://developers.google.com/web/fundamentals/performance/html/" target="_blank" rel="noopener"><img src="<?php print $view->module->dir_url(); ?>admin/images/html.png" alt="HTML Optimization" width="180" height="180" border="0" style="float:right;"></a>
+				<a href="https://validator.w3.org/" target="_blank" rel="noopener"><img src="<?php print $view->module->dir_url(); ?>admin/images/html.png" alt="HTML Optimization" width="180" height="180" border="0" style="float:right;"></a>
 			</div>
 			<h1><?php print $module_name; ?> <?php print $module_version; ?></h1>
 
