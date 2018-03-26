@@ -6,10 +6,12 @@ namespace O10n;
  *
  * Enhanced version of HTML.php from Minify
  *
+ * @author Stephen Clay <steve@mrclay.org>
+ * @link https://github.com/mrclay/minify/
+ *
  * Some optimizations:
  * - line break every 500 characters @link https://developers.google.com/closure/compiler/faq?csw=1#linefeeds
  *
- * @link https://github.com/mrclay/minify/
  *
  * @package    optimization
  * @subpackage optimization/controllers

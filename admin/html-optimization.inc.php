@@ -22,7 +22,7 @@ $this->form_start(__('HTML Optimization', 'o10n'), 'html');
         <th scope="row">Minify HTML</th>
         <td>
             <label><input type="checkbox" name="o10n[html.minify.enabled]" value="1"<?php $checked('html.minify.enabled'); ?> /> Enabled</label>
-            <p class="description">Compress HTML using an enhanced version of <a href="https://github.com/optimalisatie/above-the-fold-optimization/blob/master/lib/HTML.php" target="_blank">HTML.php</a>.</p>
+            <p class="description">Compress HTML using an enhanced version of <a href="https://github.com/o10n-x/wordpress-html-optimization/blob/master/lib/HTML.php" target="_blank">HTML.php</a>.</p>
         </td>
     </tr>
     <tr valign="top">
