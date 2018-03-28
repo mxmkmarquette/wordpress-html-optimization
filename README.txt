@@ -5,7 +5,7 @@ Tags: html, spdy, server push, push, service worker, cache digest, pwa
 Requires at least: 4.0
 Requires PHP: 5.4
 Tested up to: 4.9.4
-Stable tag: 0.0.1
+Stable tag: 0.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,9 +13,9 @@ Advanced HTML optimization toolkit. Minify, code optimization, search & replace,
 
 == Description ==
 
-This plugin is a toolkit for HTML optimization.
+This plugin is a toolkit for advanced HTML optimization.
 
-The plugin provides in a complete solution for HTTP/2 Server Push, using JSON based configuration and filters to dynamicly push assets. In partnership with the PWA Optimization plugin this plugin adds a Service Worker based Cache-Digest calculation to save data transfer by pushing only assets that are not already cached in the browser.
+The plugin provides in a complete solution for HTML optimization including HTML minification, selective removal of comments and search & replace.
 
 Additional features can be requested on the [Github forum](https://github.com/o10n-x/wordpress-html-optimization/issues).
 
@@ -36,6 +36,9 @@ Documentation is available on [Github](https://github.com/o10n-x/wordpress-html-
 
 
 == Changelog ==
+
+= 0.0.2 =
+* Update readme
 
 = 0.0.1 =
 
