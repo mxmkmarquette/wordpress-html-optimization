@@ -58,7 +58,7 @@ class Html extends Controller implements Controller_Interface
         if (isset($this->replace) && is_array($this->replace) && !empty($this->replace)) {
         
             // add filter for HTML output
-            add_filter('o10n_html_pre', array( $this, 'search_replace' ), 10, 1);
+            add_filter('o10n_html_pre', array( $this, 'search_replace' ), $this->first_priority, 1);
         } else {
             $this->replace = false;
         }
@@ -69,7 +69,7 @@ class Html extends Controller implements Controller_Interface
         if ($this->options->bool('html.minify.enabled')) {
             
             // add filter for HTML output
-            add_filter('o10n_html_pre', array( $this, 'process_html' ), 10, 1);
+            add_filter('o10n_html', array( $this, 'process_html' ), 1000, 1);
         }
     }
 
