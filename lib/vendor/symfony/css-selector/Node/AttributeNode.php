@@ -29,7 +29,7 @@ class AttributeNode extends AbstractNode
     private $operator;
     private $value;
 
-    public function __construct(NodeInterface $selector, ?string $namespace, string $attribute, string $operator, ?string $value)
+    public function __construct(NodeInterface $selector, ?string $namespace, string $attribute, string $operator, string $value)
     {
         $this->selector = $selector;
         $this->namespace = $namespace;
