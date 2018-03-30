@@ -21,10 +21,83 @@ $this->form_start(__('HTML Optimization', 'o10n'), 'html');
     <tr valign="top">
         <th scope="row">Minify HTML</th>
         <td>
-            <label><input type="checkbox" name="o10n[html.minify.enabled]" value="1"<?php $checked('html.minify.enabled'); ?> /> Enabled</label>
-            <p class="description">Compress HTML using an enhanced version of <a href="https://github.com/o10n-x/wordpress-html-optimization/blob/master/lib/HTML.php" target="_blank">HTML.php</a>.</p>
+            <label><input type="checkbox" name="o10n[html.minify.enabled]" data-json-ns="1" value="1"<?php $checked('html.minify.enabled'); ?> /> Enabled</label>
+            <p class="description">Compress and optimize HTML code.</p>
+
+
+            <div class="suboption" data-ns="html.minify"<?php $visible('html.minify'); ?>>
+
+                <p class="poweredby" data-ns="html.minify"<?php $visible('html.minify', ($get('html.minify.minifier') === 'htmlphp')); ?> data-ns-condition="html.minify.minifier==htmlphp">Powered by <a href="https://github.com/mrclay/minify/" target="_blank">Minify's HTML.php</a><span class="star">
+                    <a class="github-button" data-manual="1" href="https://github.com/mrclay/minify/" data-icon="octicon-star" data-show-count="true" aria-label="Star mrclay/minify on GitHub">Star</a></span>
+                    </p>
+
+                <p class="poweredby" data-ns="html.minify"<?php $visible('html.minify', ($get('html.minify.minifier') === 'voku-htmlmin')); ?> data-ns-condition="html.minify.minifier==voku-htmlmin">Powered by <a href="https://github.com/voku/HtmlMin" target="_blank">HtmlMin</a><span class="star">
+                    <a class="github-button" data-manual="1" href="https://github.com/voku/HtmlMin" data-icon="octicon-star" data-show-count="true" aria-label="Star voku/HtmlMin on GitHub">Star</a></span>
+                    </p>
+
+                <select name="o10n[html.minify.minifier]" data-ns-change="html.minify" data-json-default="<?php print esc_attr(json_encode('htmlphp')); ?>">
+                    <option value="htmlphp"<?php $selected('html.minify.minifier', 'htmlphp'); ?>>HTML.php from Minify (mcrclay)</option>
+                    <option value="voku-htmlmin"<?php $selected('html.minify.minifier', 'voku-htmlmin'); ?>>HtmlMin by voku</option>
+                    <option value="custom"<?php $selected('html.minify.minifier', 'custom'); ?>>Custom minifier (WordPress filter hook)</option>
+                </select> 
+                <p class="description">Choose a minifier that provides the best performance for your HTML code.</p>
+            </div>
+
+            <div class="suboption" data-ns="html.minify"<?php $visible('html.minify', ($get('html.minify.minifier') === 'custom')); ?> data-ns-condition="html.minify.minifier==custom">
+                <p style="font-size:16px;line-height:18px;">The Custom Minifier option enables to use any HTML minifier via the WordPress filter hook <code>o10n_html_custom_minify</code>. (<a href="javascript:void(0);" onclick="jQuery('#custom_minify_example').fadeToggle();">show example</a>)</p>
+            <div class="info_yellow" id="custom_minify_example" style="display:none;"><strong>Example:</strong> <pre class="clickselect" title="<?php print esc_attr('Click to select', 'optimization'); ?>" style="cursor:copy;padding: 10px;margin: 0 1px;margin-top:5px;font-size: 13px;">
+/* Custom HTML minifier */
+add_filter('o10n_html_custom_minify', function ($HTML) {
+
+    // apply html optimization
+    exec('/node /path/to/optimize-html.js /tmp/js-source.html');
+    $minified = file_get_contents('/tmp/output.html');
+
+    // alternative
+    $minified = HTMLCompressor::minify($HTML);
+
+    return $minified;
+
+});</pre></div>
+            </div>
         </td>
     </tr>
+</table>
+
+
+<div class="advanced-options" data-ns="html.minify" data-json-advanced="html.minify.voku-htmlmin"<?php $visible('html.minify', ($get('html.minify.minifier') === 'voku-htmlmin')); ?> data-ns-condition="html.minify.minifier==voku-htmlmin">>
+
+    <table class="advanced-options-table widefat fixed striped">
+        <colgroup><col style="width: 85px;"/><col style="width: 250px;"/><col /></colgroup>
+        <thead class="first">
+            <tr>
+                <th class="toggle">
+                    <a href="javascript:void(0);" class="advanced-toggle-all button button-small">Toggle All</a>
+                </th>
+                <th class="head">
+                  HtmlMin Options
+                </th>
+                <th>
+                    <p class="poweredby">Powered by <a href="https://github.com/voku/HtmlMin" target="_blank">HtmlMin</a><span class="star">
+                    <a class="github-button" data-manual="1" href="https://github.com/voku/HtmlMin" data-icon="octicon-star" data-show-count="true" aria-label="Star voku/HtmlMin on GitHub">Star</a></span>
+                    </p>
+                </th> 
+            </tr>
+        </thead>
+        <tbody>
+<?php
+    $advanced_options('html.minify.voku-htmlmin');
+?>
+        </tbody>
+    </table>
+<br />
+<?php
+submit_button(__('Save'), 'primary large', 'is_submit', false);
+?>
+<br />
+</div>
+
+<table class="form-table">
     <tr valign="top">
         <th scope="row">Strip HTML comments</th>
         <td>

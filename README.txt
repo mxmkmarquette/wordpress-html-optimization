@@ -5,7 +5,7 @@ Tags: html, minify, compress, search replace, optimization, strip, comments
 Requires at least: 4.0
 Requires PHP: 5.4
 Tested up to: 4.9.4
-Stable tag: 0.0.5
+Stable tag: 0.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,11 @@ Documentation is available on [Github](https://github.com/o10n-x/wordpress-html-
 
 
 == Changelog ==
+
+= 0.0.6 =
+* Added: support for multiple HTML minifiers.
+* Added: [HtmlMin](https://github.com/voku/HtmlMin) minifier by voku
+* Added: Custom minifier option (support for Node.js, server software etc.)
 
 = 0.0.5 =
 * Core update (see changelog.txt)

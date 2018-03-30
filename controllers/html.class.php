@@ -16,6 +16,8 @@ class Html extends Controller implements Controller_Interface
 {
     private $preserve_comments = false; // preserve comments
     private $replace = false; // replace in HTML
+
+    private $minifier; // minifier
     
     /**
      * Load controller
@@ -67,7 +69,10 @@ class Html extends Controller implements Controller_Interface
          * HTML Optimization Enabled
          */
         if ($this->options->bool('html.minify.enabled')) {
-            
+
+            // minifier
+            $this->minifier = $this->options->get('html.minify.minifier', 'htmlphp');
+
             // add filter for HTML output
             add_filter('o10n_html', array( $this, 'process_html' ), 1000, 1);
         }
@@ -104,19 +109,85 @@ class Html extends Controller implements Controller_Interface
 
         // minification
         if ($this->options->bool('html.minify')) {
+            switch ($this->minifier) {
+                case "voku-htmlmin":
+                    if (!class_exists('\voku\helper\HtmlMin')) {
+                        require_once $this->core->modules('html')->dir_path() . 'lib/vendor/autoload.php';
+                    }
 
-            // use PHP minifier
-            if (!class_exists('O10n\HTMLMinify')) {
-                require_once $this->core->modules('html')->dir_path() . 'lib/HTML.php';
-            }
-            $htmlmin = new HTMLMinify();
+                    $htmlMin = new \voku\helper\HtmlMin();
 
-            // try minification
-            try {
-                $minified = $htmlmin->minify($HTML);
-            } catch (Exception $err) {
-                $minified = false;
+                    $options = array(
+                        'doOptimizeViaHtmlDomParser',
+                        'doRemoveComments',
+                        'doSumUpWhitespace',
+                        'doRemoveWhitespaceAroundTags',
+                        'doOptimizeAttributes',
+                        'doRemoveHttpPrefixFromAttributes',
+                        'doRemoveDefaultAttributes',
+                        'doRemoveDeprecatedAnchorName',
+                        'doRemoveDeprecatedScriptCharsetAttribute',
+                        'doRemoveDeprecatedTypeFromScriptTag',
+                        'doRemoveDeprecatedTypeFromStylesheetLink',
+                        'doRemoveEmptyAttributes',
+                        'doRemoveValueFromEmptyInput',
+                        'doSortCssClassNames',
+                        'doSortHtmlAttributes',
+                        'doRemoveSpacesBetweenTags',
+                        'doRemoveOmittedQuotes',
+                        'doRemoveOmittedHtmlTags'
+                    );
+                    foreach ($options as $option_name) {
+                        if ($this->options->bool('html.minify.voku-htmlmin.' . $option_name)) {
+                            $htmlMin->{$option_name}();
+                        }
+                    }
+
+                    // minify
+                    try {
+                        $minified = $htmlMin->minify($HTML);
+                    } catch (\Exception $err) {
+                        throw new Exception('HtmlMin minifier failed: ' . $err->getMessage(), 'js');
+                    }
+
+                    if (!$minified && $minified !== '') {
+                        throw new Exception('HtmlMin minifier failed: unknown error', 'js');
+                    }
+
+                break;
+                case "custom":
+
+                    // minify
+                    try {
+                        $minified = apply_filters('o10n_html_custom_minify', $HTML);
+                    } catch (\Exception $err) {
+                        throw new Exception('Custom HTML minifier failed: ' . $err->getMessage(), 'js');
+                    }
+
+                    if (!$minified && $minified !== '') {
+                        throw new Exception('Custom HTML minifier failed: unknown error', 'js');
+                    }
+
+                break;
+                case "htmlphp":
+                default:
+
+                    // load library
+                    if (!class_exists('O10n\HTMLMinify')) {
+                        require_once $this->core->modules('html')->dir_path() . 'lib/HTML.php';
+                    }
+                    $htmlmin = new HTMLMinify();
+
+                    // try minification
+                    try {
+                        $minified = $htmlmin->minify($HTML);
+                    } catch (Exception $err) {
+                        $minified = false;
+                    }
+
+                break;
             }
+            
 
             if ($minified) {
                 return $minified;

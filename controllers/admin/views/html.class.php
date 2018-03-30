@@ -130,10 +130,35 @@ class AdminViewHtml extends AdminViewBase
 
                 $forminput->type_verify(array(
                     'html.minify.enabled' => 'bool',
+                    'html.minify.minifier' => 'string',
                     'html.remove_comments.enabled' => 'bool',
                     'html.remove_comments.preserve' => 'newline_array',
                     'html.replace' => 'json-array'
                 ));
+
+                $minifier = $forminput->get('html.minify.minifier');
+                if ($minifier === 'voku-htmlmin') {
+                    $forminput->type_verify(array(
+                        'html.minify.voku-htmlmin.doOptimizeViaHtmlDomParser' => 'bool',
+                        'html.minify.voku-htmlmin.doRemoveComments' => 'bool',
+                        'html.minify.voku-htmlmin.doSumUpWhitespace' => 'bool',
+                        'html.minify.voku-htmlmin.doRemoveWhitespaceAroundTags' => 'bool',
+                        'html.minify.voku-htmlmin.doOptimizeAttributes' => 'bool',
+                        'html.minify.voku-htmlmin.doRemoveHttpPrefixFromAttributes' => 'bool',
+                        'html.minify.voku-htmlmin.doRemoveDefaultAttributes' => 'bool',
+                        'html.minify.voku-htmlmin.doRemoveDeprecatedAnchorName' => 'bool',
+                        'html.minify.voku-htmlmin.doRemoveDeprecatedScriptCharsetAttribute' => 'bool',
+                        'html.minify.voku-htmlmin.doRemoveDeprecatedTypeFromScriptTag' => 'bool',
+                        'html.minify.voku-htmlmin.doRemoveDeprecatedTypeFromStylesheetLink' => 'bool',
+                        'html.minify.voku-htmlmin.doRemoveEmptyAttributes' => 'bool',
+                        'html.minify.voku-htmlmin.doRemoveValueFromEmptyInput' => 'bool',
+                        'html.minify.voku-htmlmin.doSortCssClassNames' => 'bool',
+                        'html.minify.voku-htmlmin.doSortHtmlAttributes' => 'bool',
+                        'html.minify.voku-htmlmin.doRemoveSpacesBetweenTags' => 'bool',
+                        'html.minify.voku-htmlmin.doRemoveOmittedQuotes' => 'bool',
+                        'html.minify.voku-htmlmin.doRemoveOmittedHtmlTags' => 'bool'
+                    ));
+                }
             break;
         }
     }
