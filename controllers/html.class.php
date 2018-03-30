@@ -138,9 +138,7 @@ class Html extends Controller implements Controller_Interface
                         'doRemoveOmittedHtmlTags'
                     );
                     foreach ($options as $option_name) {
-                        if ($this->options->bool('html.minify.voku-htmlmin.' . $option_name)) {
-                            $htmlMin->{$option_name}();
-                        }
+                        $htmlMin->{$option_name}($this->options->bool('html.minify.voku-htmlmin.' . $option_name));
                     }
 
                     // minify
