@@ -5,7 +5,7 @@ Tags: html, minify, compress, search replace, optimization, strip, comments
 Requires at least: 4.0
 Requires PHP: 5.4
 Tested up to: 4.9.4
-Stable tag: 0.0.7
+Stable tag: 0.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,9 @@ Documentation is available on [Github](https://github.com/o10n-x/wordpress-html-
 
 
 == Changelog ==
+
+= 0.0.8 =
+* Core update (see changelog.txt)
 
 = 0.0.7 =
 * Temporary fix for HtmlMin minifier: WordPress SVN [does not support PHP7+](https://make.wordpress.org/systems/2018/03/12/change-all-svn-php-linting-to-php7/), Symfony [css-selector](https://github.com/symfony/css-selector/) removed until it can be published.

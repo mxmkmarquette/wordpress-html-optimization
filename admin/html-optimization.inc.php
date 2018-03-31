@@ -65,7 +65,9 @@ add_filter('o10n_html_custom_minify', function ($HTML) {
 </table>
 
 
-<div class="advanced-options" data-ns="html.minify" data-json-advanced="html.minify.voku-htmlmin"<?php $visible('html.minify', ($get('html.minify.minifier') === 'voku-htmlmin')); ?> data-ns-condition="html.minify.minifier==voku-htmlmin">>
+<div class="advanced-options" data-ns="html.minify" data-json-advanced="html.minify.voku-htmlmin"<?php $visible('html.minify', ($get('html.minify.minifier') === 'voku-htmlmin')); ?> data-ns-condition="html.minify.minifier==voku-htmlmin">
+
+    <p class="warning_red">Due to <a href="https://make.wordpress.org/systems/2018/03/12/change-all-svn-php-linting-to-php7/" target="_blank">a bug</a> in WordPress SVN it is not possible yet to publish PHP 7+ code on WordPress. The <code>HtmlDomParser()</code> options require Symfony <a href="https://github.com/symfony/css-selector/" target="_blank">css-selector</a> (PHP 7). If you want to start using this option you can manually install the css-selector dependency via composer in the directory <code>cd /wp-content/plugins/html-optimization/lib/; composer require symfony/css-selector</code>.</p>
 
     <table class="advanced-options-table widefat fixed striped">
         <colgroup><col style="width: 85px;"/><col style="width: 250px;"/><col /></colgroup>
