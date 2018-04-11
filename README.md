@@ -8,7 +8,7 @@ Advanced HTML optimization toolkit. Minify, code optimization, search & replace,
 
 ![Github Updater](https://github.com/afragen/github-updater/raw/develop/assets/GitHub_Updater_logo_small.png)
 
-This plugin can be installed and updated using [Github Updater](https://github.com/afragen/github-updater).
+This plugin can be installed and updated using [Github Updater](https://github.com/afragen/github-updater) ([installation instructions](https://github.com/afragen/github-updater/wiki/Installation))
 
 ## WordPress WPO Collection
 
