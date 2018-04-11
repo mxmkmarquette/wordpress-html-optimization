@@ -15,6 +15,7 @@ namespace O10n;
  * Version:           0.0.10
  * Author:            Optimization.Team
  * Author URI:        https://optimization.team/
+ * GitHub Plugin URI: https://github.com/o10n-x/wordpress-html-optimization
  * Text Domain:       o10n
  * Domain Path:       /languages
  */
