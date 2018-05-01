@@ -121,7 +121,7 @@ submit_button(__('Save'), 'primary large', 'is_submit', false);
 <?php $searchreplace = $get('html.replace', array()); ?>
 <p class="description">This option enables to replace strings in the HTML. Enter JSON objects <span class="dashicons dashicons-editor-help"></span>.</p>
 <div id="html-replace"><div class="loading-json-editor"><?php print __('Loading JSON editor...', 'optimization'); ?></div></div>
-<input type="hidden" class="json" name="o10n[html.replace]" data-json-type="json-array" data-json-editor-compact="1" data-json-editor-init="1" value="<?php print esc_attr($json('html.replace')); ?>" />
+<input type="hidden" class="json" name="o10n[html.replace]" data-json-type="json-array" data-json-editor-height="auto" data-json-editor-init="1" value="<?php print esc_attr($json('html.replace')); ?>" />
 
 <div class="info_yellow"><strong>Example:</strong> <code id="html_search_replace_example" class="clickselect" data-example-text="show string" title="<?php print esc_attr('Click to select', 'optimization'); ?>" style="cursor:copy;">{"search":"string to match","replace":"newstring"}</code> (<a href="javascript:void(0);" data-example="html_search_replace_example" data-example-html="<?php print esc_attr(__('{"search":"|string to (match)|i","replace":"newstring $1","regex":true}', 'optimization')); ?>">show regular expression</a>)</div>
 
