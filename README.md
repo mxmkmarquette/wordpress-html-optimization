@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/o10n-x/wordpress-html-optimization.svg?branch=master)](https://travis-ci.org/o10n-x/wordpress-html-optimization) ![Version](https://img.shields.io/github/release/o10n-x/wordpress-html-optimization.svg)
+
 # WordPress HTML Optimization
 
 Advanced HTML optimization toolkit. Minify, code optimization, search & replace, strip comments and more.
