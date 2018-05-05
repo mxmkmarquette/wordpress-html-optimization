@@ -4,6 +4,7 @@ Advanced HTML optimization toolkit. Minify, code optimization, search & replace,
 
 * [Documentation](https://github.com/o10n-x/wordpress-html-optimization/tree/master/docs)
 * [Description](https://github.com/o10n-x/wordpress-html-optimization#description)
+* [Version history (Changelog)](https://github.com/o10n-x/wordpress-html-optimization/releases)
 
 **This plugin is removed from WordPress.org. Read the story [here](https://github.com/o10n-x/wordpress-css-optimization/issues/4).**
 
