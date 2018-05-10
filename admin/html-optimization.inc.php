@@ -125,16 +125,16 @@ submit_button(__('Save'), 'primary large', 'is_submit', false);
 
 <div class="info_yellow"><strong>Example:</strong> <code id="html_search_replace_example" class="clickselect" data-example-text="show string" title="<?php print esc_attr('Click to select', 'optimization'); ?>" style="cursor:copy;">{"search":"string to match","replace":"newstring"}</code> (<a href="javascript:void(0);" data-example="html_search_replace_example" data-example-html="<?php print esc_attr(__('{"search":"|string to (match)|i","replace":"newstring $1","regex":true}', 'optimization')); ?>">show regular expression</a>)</div>
 
-<p>You can also add a search and replace configuration using the PHP function <code>O10n\search_replace($search,$replace[,$regex])</code>. (<a href="javascript:void(0);" onclick="jQuery('#wp_html_search_replace_example').fadeToggle();">show example</a>)</p>
+<p>You can also add a search and replace configuration using the PHP function <code>\O10n\search_replace($search,$replace[,$regex])</code>. (<a href="javascript:void(0);" onclick="jQuery('#wp_html_search_replace_example').fadeToggle();">show example</a>)</p>
 
 <div id="wp_html_search_replace_example" style="display:none;">
 <pre style="padding:10px;border:solid 1px #efefef;">add_action('init', function () {
 
     /* String replace */
-    O10n\search_replace('string', 'replace');
+    \O10n\search_replace('string', 'replace');
 
     /* Regular Expression */
-    O10n\search_replace(array(
+    \O10n\search_replace(array(
         '|regex (string)|i',
         '|regex2 (string)|i'
     ), array(
