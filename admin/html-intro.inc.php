@@ -28,7 +28,7 @@ $module_version = $view->module->version();
 			
 			<p class="about-text" style="min-height:inherit;">This plugin is a toolkit for advanced HTML optimization for WordPress.</p>
 
-			<!--p class="about-text info_white" style="min-height:inherit;border-color:#0073aa;background:#f1faff;"><strong><span class="dashicons dashicons-welcome-comments" style="line-height: 32px;font-size: 34px;width: inherit;color:#0073aa;"></span></strong> The optimization plugins have been removed from WordPress.org. Read the story <a href="https://github.com/o10n-x/wordpress-css-optimization/issues/4" target="_blank">here</a>.</p-->
+			
 
 			<p class="about-text" style="min-height:inherit;">Getting started? Read <a href="http://www.websiteoptimization.com/speed/4/" target="_blank">this article</a> about HTML Optimization by WebSiteOptimization.com. Test the validity of your HTML at <a href="https://validator.w3.org/" target="_blank">W3C Markup Validation</a> and test the performance on <a href="https://www.webpagetest.org/?url=<?php print urlencode(home_url()); ?>" target="_blank" rel="noopener">WebPageTest.org</a> and <a href="https://gtmetrix.com/?url=<?php print urlencode(home_url()); ?>" target="_blank" rel="noopener">GTMetrix</a>.</p>
 
